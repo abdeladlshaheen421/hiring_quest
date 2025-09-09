@@ -1,0 +1,48 @@
+[
+  {
+    "id": "62e1bd58-116a-4a94-84b6-433e1e73129b",
+    "client": { "id": "78eefed2-073b-4196-9ecf-40ad310d27f9" },
+    "country": "EG",
+    "servicesNeeded": ["research", "support"],
+    "budget": 5000000,
+    "status": "todo"
+  },
+  {
+    "id": "43f4a4b6-ad30-486d-92a4-a4b36c389915",
+    "client": { "id": "9064591e-c3aa-4022-8c7a-a6cbd66dbecf" },
+    "country": "US",
+    "servicesNeeded": ["Consulting", "support"],
+    "budget": 10000000,
+    "status": "in_progress"
+  },
+  {
+    "id": "bd62333f-781c-4a2c-b353-66047c719180",
+    "client": { "id": "d7cdffd7-ecc7-4fe7-80f0-906f1333494f" },
+    "country": "SA",
+    "servicesNeeded": [
+      "Web Development",
+      "AI & Machine Learning",
+      "Mobile App Development",
+      "Support",
+      "analysis"
+    ],
+    "budget": 500000,
+    "status": "completed"
+  },
+  {
+    "id": "6389cdcd-eb8d-4aef-a779-a206561a79bb",
+    "client": { "id": "63765455-5eee-4ca7-9eae-5c22a4fc6676" },
+    "country": "ZH",
+    "servicesNeeded": ["Maintenance", "Delivery", "Support"],
+    "budget": 100000,
+    "status": "todo"
+  },
+  {
+    "id": "b6452db5-e186-4d3b-88c0-a147b879f6f3",
+    "client": { "id": "6a92a6a2-0100-4068-b50f-eeca921b611d" },
+    "country": "QA",
+    "servicesNeeded": ["Medical Solutions"],
+    "budget": 2000000,
+    "status": "in_progress"
+  }
+]

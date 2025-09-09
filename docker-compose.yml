@@ -1,0 +1,50 @@
+version: '3.0'
+
+services:
+  api:
+    build: .
+    container_name: hq_api
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - mongo
+      - mailhog
+
+  mysql:
+    image: mysql:8.0
+    container_name: hq_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password --mysql-native-password=ON
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  mongo:
+    image: mongo:7
+    container_name: hq_mongo
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: hq_mailhog
+    restart: unless-stopped
+    ports:
+      - '8025:8025' # Web UI
+      - '1025:1025' # SMTP
+
+volumes:
+  mysql_data:
+  mongo_data:

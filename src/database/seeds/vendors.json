@@ -1,0 +1,48 @@
+[
+  {
+    "id": "5f2c5267-478f-40ea-91ca-f31fb6a8b0f9",
+    "name": "Vendor A",
+    "countriesSupported": ["US", "CA"],
+    "servicesOffered": ["research", "analysis"],
+    "rating": 4.5,
+    "responseSlaHours": 24
+  },
+  {
+    "id": "c0c849a6-45a4-4bc3-94f8-07697ad5d86d",
+    "name": "Vendor B",
+    "countriesSupported": ["KU", "IND"],
+    "servicesOffered": ["Consulting", "Support"],
+    "rating": 3,
+    "responseSlaHours": 17
+  },
+  {
+    "id": "eb1da876-2c41-45be-8c46-330f59a9cdce",
+    "name": "Vendor C",
+    "countriesSupported": ["US", "CA"],
+    "servicesOffered": ["Medical Solutions"],
+    "rating": 2.5,
+    "responseSlaHours": 15
+  },
+  {
+    "id": "bb7bd168-8252-429b-a99b-43194327210c",
+    "name": "Vendor E",
+    "countriesSupported": ["QA", "ZH"],
+    "servicesOffered": ["Maintenance", "Delivery"],
+    "rating": 4,
+    "responseSlaHours": 24
+  },
+  {
+    "id": "50028ce0-6066-464a-94dc-1a072532d62c",
+    "name": "Vendor F",
+    "countriesSupported": ["EG", "SA"],
+    "servicesOffered": [
+      "IT Infrastructure",
+      "Web Development",
+      "AI & Machine Learning",
+      "Mobile App Development",
+      "Cloud Hosting"
+    ],
+    "rating": 4.75,
+    "responseSlaHours": 12
+  }
+]
