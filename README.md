@@ -7,7 +7,7 @@ $ nano .env #to make environment file and fill it as .env-example
 ```
 
 ```bash
-$ npm install
+$ npm install --legacy-peer-deps
 ```
 
 ## DataBase Connection
@@ -37,8 +37,11 @@ $ npm run start:prod
 
 2. Build and start:
 
+- create `backend.env` file like .env-example
+- run `docker compose  logs api -f`-> see api logs and check it works
+
 ```
-docker compose up --build
+docker compose up -d --build
 ```
 
 3. App runs at http://localhost:3000
