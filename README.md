@@ -62,7 +62,7 @@ Mongo: mongodb://localhost:27017/hiring_quest
   - POST `/projects/:id/matches/rebuild` (admin, client owner)
 
 - Research Docs
-  - POST `/research-docs` (admin, client) → upload { title, content, tags?, projectId }
+  - POST `/research-docs/upload` (admin, client) → upload { title, content, tags?, projectId }
   - GET `/research-docs?tag=&text=&projectId=` (admin, client)
 
 - Analytics

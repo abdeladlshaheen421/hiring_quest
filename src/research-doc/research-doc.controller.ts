@@ -22,7 +22,7 @@ export class ResearchDocController {
   constructor(private readonly service: ResearchDocService) {}
 
   @UseGuards(JwtAuthGuard, RoleGuard)
-  @Get()
+  @Get('')
   @Role(RoleEnum.ADMIN, RoleEnum.CLIENT)
   async search(
     @Query('tag') tag?: string,
@@ -55,12 +55,13 @@ export class ResearchDocController {
       title,
       tags,
       projectId,
-    }: { title?: string; tags?: string[]; projectId: string },
+      content,
+    }: { title?: string; tags?: string[]; projectId: string; content?: string },
   ) {
     const avatarFd = file?.filename ?? '';
     return this.service.create({
       title: title ?? file?.originalname,
-      content: '',
+      content,
       tags: tags ?? [],
       projectId: projectId,
       avatarFd,

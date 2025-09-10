@@ -17,15 +17,15 @@ export class ProjectOwnershipGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
-    const user = req.user as { role: string; clientId?: string };
+    const user = req.user as { role: string; client?: { id: string } };
     const projectId = req.params?.id;
     if (!projectId || user?.role !== 'client') return true;
     const project = await this.projectRepo.findOne({
       where: { id: projectId },
       relations: ['client'],
     });
-    if (!project || project.client.id !== user.clientId) {
-      throw new NotFoundException('Project not found');
+    if (!project || project.client.id !== user?.client?.id) {
+      throw new NotFoundException({ message: 'Project not found' });
     }
     return true;
   }
