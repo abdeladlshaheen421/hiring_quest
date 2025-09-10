@@ -1,13 +1,22 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  NotFoundException,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 
-@Injectable()
-export class NotFoundMiddleware implements NestMiddleware {
-  use(req: Request, res: Response) {
-    res.status(404).json({
+@Catch(NotFoundException)
+export class NotFoundFilter implements ExceptionFilter {
+  catch(exception: NotFoundException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
+
+    response.status(404).json({
       statusCode: 404,
       message: 'Resource not found',
-      path: req.originalUrl,
+      path: request.url,
     });
   }
 }

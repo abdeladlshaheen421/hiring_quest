@@ -7,6 +7,8 @@ import {
   AuthUser,
 } from 'src/auth/decorators/current-user.decorator';
 import { ProjectOwnershipGuard } from './project-ownership.guard';
+import { RoleGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('projects')
 export class ProjectsController {
@@ -14,7 +16,7 @@ export class ProjectsController {
 
   @Post(':id/matches/rebuild')
   @Role(RoleEnum.ADMIN, RoleEnum.CLIENT)
-  @UseGuards(ProjectOwnershipGuard)
+  @UseGuards(JwtAuthGuard, RoleGuard, ProjectOwnershipGuard)
   async rebuildMatches(
     @Param('id') projectId: string,
     @CurrentUser() user: AuthUser,

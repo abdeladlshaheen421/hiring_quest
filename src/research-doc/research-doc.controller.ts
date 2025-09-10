@@ -5,6 +5,7 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -13,11 +14,14 @@ import { extname } from 'path';
 import { ResearchDocService } from './research-doc.service';
 import { Role } from 'src/auth/decorators/roles.decorator';
 import { RoleEnum } from 'src/client/client.enum';
+import { RoleGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('research-docs')
 export class ResearchDocController {
   constructor(private readonly service: ResearchDocService) {}
 
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Get()
   @Role(RoleEnum.ADMIN, RoleEnum.CLIENT)
   async search(
@@ -28,6 +32,7 @@ export class ResearchDocController {
     return this.service.search({ tag, text, projectId });
   }
 
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Post('upload')
   @Role(RoleEnum.ADMIN, RoleEnum.CLIENT)
   @UseInterceptors(

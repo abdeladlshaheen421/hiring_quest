@@ -17,7 +17,7 @@ export class AuthService {
   ): Promise<{ access_token: string }> {
     const user = await this.usersService.findByUsername(username);
     if (!user || !(await bcrypt.compare(pass, user.password))) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException({ message: 'Invalid credentials' });
     }
     const payload = {
       id: user.id,
