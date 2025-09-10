@@ -6,9 +6,7 @@ import { ConfigrationModule } from 'src/config/config.module';
 import { ConfigrationService } from 'src/config/config.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
-import { RoleGuard } from './roles.guard';
 import { UsersModule } from 'src/user/user.module';
-import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Module({
   imports: [
