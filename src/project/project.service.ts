@@ -31,14 +31,6 @@ export class ProjectService {
       where: { id: projectId },
       relations: ['client'],
     });
-    if (!project) throw new NotFoundException('Project not found');
-    if (
-      user &&
-      user.role === 'client' &&
-      user?.client?.id !== project.client.id
-    ) {
-      throw new NotFoundException('Project not found');
-    }
 
     const vendors = await this.vendorRepository.find();
     const eligible = vendors.filter((v) =>
