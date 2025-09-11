@@ -95,7 +95,7 @@ export class ProjectService {
 
   async rebuildMatchesForActiveProjects() {
     const activeProjects = await this.projectRepository.find({
-      where: { status: 'active' as any },
+      where: { status: 'in_progress' as any },
     });
     for (const p of activeProjects) {
       await this.rebuildMatches(p.id);
